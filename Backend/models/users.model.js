@@ -1,5 +1,7 @@
 const mongodb = require('mongoose')
 
+//mongodb database schema for authenticate user's login and signup
+
 const userScheme = mongodb.Schema({
 
     name: {

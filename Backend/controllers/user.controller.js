@@ -3,6 +3,8 @@ const bcrypt = require('bcrypt')
 const createTokenAndCookie = require('../jwt/generateToken');
 
 
+//sign controller logic
+
 const sign = async (req, res) => {
   try {
 
@@ -21,11 +23,7 @@ const sign = async (req, res) => {
     }
 
 
-
-
     const hashedpassword = await bcrypt.hash(password, 10)
-
-
 
 
     const newUser = await new User({
@@ -49,6 +47,7 @@ const sign = async (req, res) => {
 }
 
 
+//login controller logic
 
 
 const login = async (req, res) => {
@@ -85,6 +84,8 @@ const login = async (req, res) => {
   }
 }
 
+
+//logout controller logic
 
 const logout = async (req, res) => {
   try {

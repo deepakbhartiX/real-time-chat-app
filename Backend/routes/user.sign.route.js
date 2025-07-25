@@ -1,5 +1,7 @@
 const { sign, login, logout } = require('../controllers/user.controller.js')
 
+//routes config for user auth 
+
 const express = require('express');
 
 const route = express.Router();
