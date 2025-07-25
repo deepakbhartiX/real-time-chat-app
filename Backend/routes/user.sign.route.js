@@ -1,9 +1,13 @@
-const sign = require('../controllers/user.sign.js')
+const { sign, login, logout } = require('../controllers/user.controller.js')
 
 const express = require('express');
 
 const route = express.Router();
 
-route.post('/',sign)
+route.post('/sign', sign)
 
-module.exports = {route}
+route.post('/login', login)
+
+route.post('/logout', logout)
+
+module.exports = { route }

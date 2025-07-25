@@ -2,30 +2,30 @@ const mongodb = require('mongoose')
 
 const userScheme = mongodb.Schema({
 
-    name:{
-        type:String,
-        require:true,
+    name: {
+        type: String,
+        require: true,
     },
-    email:{
-        type:String,
-        require:true,
-        unique:true,
-        lowercase:true,
+    email: {
+        type: String,
+        require: true,
+        unique: true,
+        lowercase: true,
     },
-    password:{
-        type:String,
-        requrie:true,
-        
+    password: {
+        type: String,
+        requrie: true,
+
     },
-    confirmpassword:{
-        type:String,
-        require:true
+    confirmpassword: {
+        type: String,
+        require: true
     },
 
 
 
-},{timestamp:true})
+}, { timestamp: true })
 
 
-module.exports  = mongodb.model('User',userScheme)
+module.exports = mongodb.model('User', userScheme)
 
