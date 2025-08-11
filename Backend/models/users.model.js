@@ -19,11 +19,7 @@ const userScheme = mongodb.Schema({
         requrie: true,
 
     },
-    confirmpassword: {
-        type: String,
-        require: true
-    },
-
+  
 
 
 }, { timestamp: true })

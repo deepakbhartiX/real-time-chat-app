@@ -8,7 +8,7 @@ const createTokenAndCookie = (username, res) => {
         expiresIn: "5d"
     })
 
-    res.cookie('jwt', token, {
+    return res.cookie('jwt', token, {
         httpOnly: true, //xss attacks
         secure: true,
         sameSite: "strict", //csrf attack

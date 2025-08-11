@@ -1,9 +1,13 @@
 import React from 'react'
 import { useForm } from "react-hook-form"
+import { useAuth } from '../context/AuthProvider'
+import axios from 'axios'
 
 
 
 function Login() {
+
+    const { Authuser, setAuthUser } = useAuth()
 
     const {
         register,
@@ -12,7 +16,35 @@ function Login() {
         formState: { errors },
     } = useForm()
 
-    const onSubmit = (data) => console.log(data)
+
+    const onSubmit = async (data) => {
+        const userinfo = {
+            email: data.email,
+            password: data.password,
+        }
+
+
+        await axios.post('http://localhost:8000/login/', userinfo).then((response) => {
+            // console.log(response.data.message)
+            if (response.data.message) {
+                alert("login sucessful!");
+
+            }
+
+            localStorage.setItem("messenger", JSON.stringify(response.data))
+            setAuthUser(response.data)
+
+        }
+        ).catch(
+            (error) => {
+                alert(error.response.data.Error)
+            }
+        )
+
+
+
+
+    }
     return (
         <>
             <div className='flex h-screen items-center justify-center gap-y-2 '>
@@ -36,7 +68,8 @@ function Login() {
                         </svg>
                         <input type="text" className="grow" placeholder="Email" {...register("email", { required: true })} />
                     </label>
-                    {errors.email && <span className='text-red-500'>**This field is required**</span>}
+                    {errors.email && <span className='text-red-500'>{
+                        errors.email.message || '**This field is required**'}</span>}
 
 
                     <label className="input input-bordered flex items-center gap-2">
@@ -50,9 +83,9 @@ function Login() {
                                 d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z"
                                 clipRule="evenodd" />
                         </svg>
-                        <input type="password" className="grow" placeholder="Password" {...register("email", { required: true })} />
+                        <input type="password" className="grow" placeholder="Password" {...register("password", { required: true })} />
                     </label>
-                    {errors.email && <span className='text-red-500'>**This field is required**</span>}
+                    {errors.password && <span className='text-red-500'>**This field is required**</span>}
 
 
                     <div >
