@@ -8,7 +8,7 @@ export const AuthProvider = ({ children }) => {
   const intialUserstate = Cookie.get("jwt") || localStorage.getItem("messenger");
 
   //parse the user data and storing in state
-  const [Authuser, setAuthUser] = useState(intialUserstate ? JSON.parse(intialUserstate) : "local data not found");
+  const [Authuser, setAuthUser] = useState(intialUserstate ? JSON.parse(intialUserstate) : undefined);
 
   return (
 

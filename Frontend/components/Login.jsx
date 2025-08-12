@@ -2,6 +2,7 @@ import React from 'react'
 import { useForm } from "react-hook-form"
 import { useAuth } from '../context/AuthProvider'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 
 
@@ -91,7 +92,7 @@ function Login() {
                     <div >
                         <input className='cursor-pointer  bg-blue-500 w-full h-10' type="submit" value="Login" />
                     </div>
-                    <p>Create a new account  <span className='text-blue-500 '>Signup</span></p>
+                    <p>Create a new account  <Link to={"/signup"} className='text-blue-500 ' >Signup</Link></p>
 
 
 
