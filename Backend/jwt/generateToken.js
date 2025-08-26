@@ -7,6 +7,7 @@ const createTokenAndCookie = (username, res) => {
     const token = jwt.sign({ username }, process.env.JWT_TOKEN, {
         expiresIn: "5d"
     })
+     
 
     return res.cookie('jwt', token, {
         httpOnly: true, //xss attacks

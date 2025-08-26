@@ -18,8 +18,6 @@ function App() {
 
     <>
 
-
-
       <Routes>
 
         <Route path='/' element={Authuser ? <div className='flex h-screen'>

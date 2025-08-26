@@ -1,6 +1,7 @@
 const User = require('../models/users.model')
 const bcrypt = require('bcrypt')
 const createTokenAndCookie = require('../jwt/generateToken');
+const { model } = require('mongoose');
 
 
 //sign controller logic
@@ -13,7 +14,6 @@ const sign = async (req, res) => {
 
 
     const user = await User.findOne({ email })
-
 
     if (user) {
       return res.status(400).json({ message: 'Email already exists' });
@@ -30,7 +30,7 @@ const sign = async (req, res) => {
     })
 
 
-    newUser.save()
+    newUser.save();
     if (newUser) {
       createTokenAndCookie(newUser._id, res)
       return res.status(201).json({
@@ -62,13 +62,13 @@ const login = async (req, res) => {
 
 
     if (!valibate) {
-      return res.status(404).json({Error:'user not found'})
+      return res.status(404).json({ Error: 'user not found' })
     }
 
     const compare = await bcrypt.compare(password, valibate.password)
 
     if (!compare) {
-      return res.status(404).json({Error:"password wrong"})
+      return res.status(404).json({ Error: "password wrong" })
     }
 
 
@@ -100,4 +100,28 @@ const logout = async (req, res) => {
     return res.status(500).json({ message: "Server Error" })
   }
 }
-module.exports = { sign, login, logout }
+
+
+
+const getallUsers = async (req, res) => {
+
+  try {
+   
+    const loggedInUser = req.user._id;
+    const filterUsers = await User.find({
+      _id: { $ne: loggedInUser },
+    }).select("-password")
+
+    return res.status(201).json({ filterUsers })
+
+  } catch (error) {
+
+    return res.status(500).json({ message: "Server error from getallUsers contorller" })
+  }
+}
+
+
+
+module.exports = { sign, login, logout, getallUsers }
+
+

@@ -25,7 +25,7 @@ function Signup() {
             email: data.email,
             password: data.password,
         }
-        axios.post('http://localhost:8000/sign/', userinfo).then((response) => {
+        axios.post('/api/sign', userinfo).then((response) => {
             // console.log(response.data.message)
             if(response.data){
                 alert("Signp sucessful! You can now log in");

@@ -25,7 +25,7 @@ function Login() {
         }
 
 
-        await axios.post('http://localhost:8000/login/', userinfo).then((response) => {
+        await axios.post('/api/login', userinfo).then((response) => {
             // console.log(response.data.message)
             if (response.data.message) {
                 alert("login sucessful!");

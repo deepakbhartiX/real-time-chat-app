@@ -13,9 +13,10 @@ const userScheme = mongodb.Schema({
         require: true,
         unique: true,
         lowercase: true,
+       
     },
     password: {
-        type: String,
+            type: String,
         requrie: true,
 
     },

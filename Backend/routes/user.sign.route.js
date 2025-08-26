@@ -1,15 +1,21 @@
-const { sign, login, logout } = require('../controllers/user.controller.js')
 
 //routes config for user auth 
 
 const express = require('express');
+const { secureRoute } = require('../middleware/secureRoute.js');
+const { sign, login, logout, getallUsers } = require('../controllers/user.controller.js')
 
 const route = express.Router();
 
-route.post('/sign', sign)
+route.post('/api/sign', sign);
 
-route.post('/login', login)
+route.post('/api/login', login)
 
-route.post('/logout', logout)
+route.post('/api/logout', logout)
+
+route.get('/api/getallUser', secureRoute, getallUsers)
 
 module.exports = { route }
+
+
+
