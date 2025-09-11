@@ -103,6 +103,7 @@ const logout = async (req, res) => {
 
 
 
+
 const getallUsers = async (req, res) => {
 
   try {
@@ -121,6 +122,7 @@ const getallUsers = async (req, res) => {
 }
 
 
+ 
 
 module.exports = { sign, login, logout, getallUsers }
 

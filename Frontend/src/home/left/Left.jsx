@@ -14,7 +14,7 @@ function left() {
 
 
 
-    <div className=' w-[30%]  bg-black text-white overflow-y-auto '  >
+    <div className=' w-[25%]  bg-black text-white overflow-y-auto '  >
       <h1 className='font-bold text-[20px] ml-5 '>Chat</h1>
 
       <Search></Search>

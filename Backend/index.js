@@ -4,10 +4,13 @@ const cors = require('cors')
 const mongodb = require('mongoose')
 
 const express = require('express');
-const app = express();
+
 
 const { route } = require('./routes/user.sign.route.js');
+const { messageroute } = require('./routes/message.routes.js')
 const validatetoken = require('./jwt/validatetoken.js');
+
+const {app,server,io} = require('./SocketIO/server.js')
 
 const port = 8000 || process.env.PORT;
 
@@ -29,6 +32,7 @@ app.use(cors())
 // app.use(validatetoken)
 
 app.use(route)
+app.use(messageroute)
 
 
 //setting root '/' route
@@ -48,7 +52,8 @@ app.get('/sign', (req, res) => {
 
 //listining port for backend server
 
-app.listen(port, () => {
+server.listen(port, () => {
     console.log(`Server running on port ${port}`)
 })
+
 

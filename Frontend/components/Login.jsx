@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form"
 import { useAuth } from '../context/AuthProvider'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-
+import toast from 'react-hot-toast'
 
 
 function Login() {
@@ -28,7 +28,7 @@ function Login() {
         await axios.post('/api/login', userinfo).then((response) => {
             // console.log(response.data.message)
             if (response.data.message) {
-                alert("login sucessful!");
+                toast.success("login sucessful!");
 
             }
 
@@ -38,7 +38,7 @@ function Login() {
         }
         ).catch(
             (error) => {
-                alert(error.response.data.Error)
+                toast.error(error.response.data.Error)
             }
         )
 

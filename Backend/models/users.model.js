@@ -17,7 +17,7 @@ const userScheme = mongodb.Schema({
     },
     password: {
             type: String,
-        requrie: true,
+             requrie: true,
 
     },
   

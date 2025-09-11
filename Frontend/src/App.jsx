@@ -5,8 +5,10 @@ import Lougout from './home/left/Logout.jsx'
 import Signup from '../components/Signup.jsx'
 import Login from '../components/Login.jsx'
 import { Navigate, Route, Routes } from 'react-router-dom'
+import toast, { Toaster } from 'react-hot-toast';
 
 import { useAuth } from '../context/AuthProvider.jsx'
+import Loading from '../components/Loading.jsx'
 
 function App() {
   const { Authuser, setAuthUser } = useAuth()
@@ -18,6 +20,8 @@ function App() {
 
     <>
 
+      {/* <Loading></Loading> */}
+
       <Routes>
 
         <Route path='/' element={Authuser ? <div className='flex h-screen'>
@@ -26,6 +30,7 @@ function App() {
           <Left></Left>
           <Right></Right>
 
+      
 
         </div> : <Navigate to={"/login"} />} />
 
@@ -34,7 +39,7 @@ function App() {
         <Route path='/signup' element={Authuser ? <Navigate to={"/"} /> : <Signup />} />
 
       </Routes>
-
+      <Toaster />
 
 
     </>
