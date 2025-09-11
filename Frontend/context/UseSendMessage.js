@@ -16,8 +16,6 @@ function UseSendMessage() {
         );
 
         
-
-        // console.log(res.data.newMessage.message)
         setMessage([ ...messages,res.data])
         setloading(false);
        

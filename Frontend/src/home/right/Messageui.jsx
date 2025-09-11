@@ -7,7 +7,7 @@ function Messageui({ message }) {
     
     const itme = authUser.user._id === message.senderId;
 
-    const chatname = itme ? "chat-start" : "chat-end"
+    const chatname = itme ? "chat-end" : "chat-start"
     const chatcolor = itme ? "bg-blue-400" : ""
 
     const createdAt = new Date(message.createdAt)

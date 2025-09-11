@@ -8,8 +8,8 @@ const sendMessage = async (req, res) => {
 
     try {
         const { message } = req.body;
-        const { id: senderId } = req.params;
-        const receiverId = req.user._id; //curent logged in user
+        const { id:receiverId} = req.params;
+        const senderId = req.user._id; //curent logged in user
 
         let conversation = await Conversation.findOne({
             participant: { $all: [senderId, receiverId] },
@@ -37,16 +37,16 @@ const sendMessage = async (req, res) => {
 
          const receiversocketId =  getReceiverSocketId(receiverId)
 
-        //  console.log(receiversocketId)
-        //  console.log(receiverId)
-
+        //  console.log(newMessage)
+         console.log(receiversocketId)
+    
         if(receiversocketId){
            io.to(receiversocketId).emit("newMessage",newMessage)
         }
 
 
 
-        res.status(201).json({ newMessage },)
+        res.status(201).json(newMessage)
 
     }
 

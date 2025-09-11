@@ -7,14 +7,14 @@ function UseGetSocketMessage() {
 
   const { socket } = useSocketContext();
 
-  // console.log(socket)
+ 
 
   const { messages, setMessage } = useConversation();
-  
-  
+
 
   useEffect(() => {
 
+    
 
 
     socket.on("newMessage", (newMessage) => {
@@ -22,27 +22,25 @@ function UseGetSocketMessage() {
       const notification = new Audio(sound);
       notification.play();
 
-      
+
+      console.log(newMessage)
+
+
 
       setMessage([...messages, newMessage])
 
-      //  console.log(messages)
 
-      // setMessage(prevMessages => [...prevMessages, newMessage]);
-
-
-      // useEffect(() => {
-      //   console.log("Messages updated:", messages);
-      // }, [messages]);
-
-
+      
 
     })
 
-    // console.log(messages)
+   
     return () => socket.off("newMessage")
-  }, [socket, setMessage])
+  }, [socket, setMessage,messages])
 
+  // useEffect(() => {
+  //   console.log("Messages updated:", messages);
+  // }, [messages]);
 
 
 }

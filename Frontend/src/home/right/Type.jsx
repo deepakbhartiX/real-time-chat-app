@@ -1,15 +1,18 @@
 import React, { useState } from 'react'
 import { IoSend } from "react-icons/io5";
 import UseSendMessage from '../../../context/UseSendMessage.js';
+import useConversation from '../../statemanage/UseConversation.js';
 function Type() {
-
+    const {  messages } = useConversation()
     const { loading, SendMessages } = UseSendMessage()
     const [message, setMessage] = useState("")
 
-    const handlesubmit = async (e)=>{
+    const handlesubmit = async (e) => {
         e.preventDefault()
+        
         await SendMessages(message)
         setMessage("")
+        // console.log( messages)
     }
     return (
         <>

@@ -57,16 +57,7 @@ io.on("connection", (socket) => {
 
 
 
-    const message = {}
-
-
-
-    socket.on('user-messages', (message) => {
-        console.log(message)
-
-
-
-    })
+    
 })
 
 
