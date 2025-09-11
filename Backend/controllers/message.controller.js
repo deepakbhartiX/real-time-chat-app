@@ -38,7 +38,7 @@ const sendMessage = async (req, res) => {
          const receiversocketId =  getReceiverSocketId(receiverId)
 
         //  console.log(newMessage)
-         console.log(receiversocketId)
+        //  console.log(receiversocketId)
     
         if(receiversocketId){
            io.to(receiversocketId).emit("newMessage",newMessage)

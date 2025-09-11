@@ -9,9 +9,9 @@ function Chatuser({ user }) {
     const { onlineUser } = useSocketContext()
 
     // const isOnline = onlineUser.includes(user._id)
-
-    const getOnlineStatus = (userId) =>{
-        return onlineUser.includes(userId) ? "Online" : "Offline"
+    // const isOnline = onlineUser.includes(user._id)
+    const getOnlineStatus = (userId) => {
+        return onlineUser.includes(userId) ? "online" : "offline"
     }
     // console.log(selectedConversation.name)
 
@@ -24,7 +24,7 @@ function Chatuser({ user }) {
 
                 <div>
 
-                    <div className={`avatar avatar-online`}>
+                    <div className={`avatar avatar-${getOnlineStatus(selectedConversation._id)}`}>
                         <div className="w-13 rounded-full">
                             <img src="https://img.daisyui.com/images/profile/demo/gordon@192.webp" />
                         </div>
@@ -35,7 +35,7 @@ function Chatuser({ user }) {
 
 
                 < div >
-                    <h1 className='text-xl'>test</h1>
+                    <h1 className='text-xl'>{selectedConversation.name}</h1>
                     <span className='text-sm'>{getOnlineStatus(selectedConversation._id)}</span>
 
                 </div >
