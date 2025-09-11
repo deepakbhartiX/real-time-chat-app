@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [react(),tailwindcss(),
   ],
   server:{
-    port:4002,
+    port:8000,
     proxy:{
       '/api':{
         target:"https://real-time-chat-app-x1x9.onrender.com",
