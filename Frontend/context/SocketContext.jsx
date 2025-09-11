@@ -14,17 +14,21 @@ export const SocketProvider = ({ children }) => {
     const [socket, setSocket] = useState(null)
     const { Authuser } = useAuth()
     const [onlineUser, setOnlineUser] = useState([])
-    
-   const {messages,setMessage} = useConversation();
+
+    const { messages, setMessage } = useConversation();
 
     // console.log(onlineUser)
 
     useEffect(() => {
         if (Authuser) {
-            const socket = io("http://localhost:8000/", {
+            const socket = io("https://real-time-chat-app-x1x9.onrender.com", {
+
+
+                transports: ["websocket"],
+
                 query: {
                     userId: Authuser.user._id,
-                   
+
                 }
 
             })
@@ -54,7 +58,7 @@ export const SocketProvider = ({ children }) => {
             }
         }
 
-          
+
 
     }, [Authuser])
 

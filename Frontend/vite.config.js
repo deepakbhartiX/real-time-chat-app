@@ -10,7 +10,7 @@ export default defineConfig({
     port:4002,
     proxy:{
       '/api':{
-        target:"http://localhost:8000",
+        target:"https://real-time-chat-app-x1x9.onrender.com",
         changeOrigin:true,
       }
     }
